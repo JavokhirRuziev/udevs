@@ -15,48 +15,49 @@ import Delever from "./components/Home/Delever";
 import SmsUz from "./components/Home/SmsUz";
 import GoodZone from "./components/Home/GoodZone";
 import Iman from "./components/Home/Iman";
-import HowWork from "./components/Home/HowWork";
+// import HowWork from "./components/Home/HowWork";
 import ContactUs from "./components/Home/ContactUs";
 
 function App() {
-  // const { t, i18n } = useTranslation();
+    // const { t, i18n } = useTranslation();
 
-  // const changeLang = (lang: string) => i18n.changeLanguage(lang);
+    // const changeLang = (lang: string) => i18n.changeLanguage(lang);
 
-  return (
-    <Layout>
-      <BannerMain />
-      <div id="Direction" />
-      <OurServices />
-      <div id="Command" />
-      <Team />
-      <div id="Services" />
-      <MobileApps />
-      <div id="ERP" />
-      <ERP />
-      <div id="UXUI" />
-      <UIUX />
-      <div id="Optimization" />
-      <Optimization />
-      <div id="Consulting" />
-      <Consulting />
-      <div id="Tools" />
-      <Tools />
-      <div id="Clients" />
-      <Clients />
-      <div id="Portfolio" />
-      <div id="Delever" />
-      <Delever />
-      <div id="SmsUz" />
-      <SmsUz />
-      <div id="GoodZone" />
-      <GoodZone />
-      <div id="Iman" />
-      <Iman />
-      <HowWork />
-      <ContactUs />
-    </Layout>
-  );
+    return (
+        <Layout>
+            <BannerMain />
+            <div id="Direction" />
+            <OurServices />
+            <div id="Command" />
+            <Team />
+            <div id="Services" />
+            <MobileApps />
+            <div id="ERP" />
+            <ERP />
+            <div id="UXUI" />
+            <UIUX />
+            <div id="Optimization" />
+            <Optimization />
+            <div id="Consulting" />
+            <Consulting />
+            <div id="Tools" />
+            <Tools />
+            <div id="Clients" />
+            <Clients />
+            <div id="Portfolio" />
+            <div id="Delever" />
+            <Delever />
+            <div id="SmsUz" />
+            <SmsUz />
+            <div id="GoodZone" />
+            <GoodZone />
+            <div id="Iman" />
+            <Iman />
+            {/* <HowWork /> */}
+            <div id="Contact" />
+            <ContactUs />
+        </Layout>
+    );
 }
 
 export default App;

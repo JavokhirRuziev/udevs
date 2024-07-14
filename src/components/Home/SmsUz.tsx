@@ -10,129 +10,175 @@ import { ReactComponent as Sms } from "../../assets/images/icons/notification.sv
 import SmsLogo from "../../assets/images/icons/sms-logo.svg";
 
 const erpArr = [
-  { name: "Website", icon: <Website /> },
-  { name: "Admin panel", icon: <Admin /> },
-  { name: "Crossplatform", icon: <Crossplatform /> },
+    { name: "Website", icon: <Website /> },
+    { name: "Admin panel", icon: <Admin /> },
+    { name: "Crossplatform", icon: <Crossplatform /> },
 ];
 
 const ErpCard = ({ el }: { el: { name: string; icon: any } }) => {
-  return (
-    <Box sx={mobileCardStyles}>
-      {el?.icon}
-      <Typography variant="h3" mt={"12px"} fontSize={"18px !important"}>
-        {el?.name}
-      </Typography>
-    </Box>
-  );
+    return (
+        <Box sx={mobileCardStyles}>
+            {el?.icon}
+            <Typography variant="h3" mt={"12px"} fontSize={"18px !important"}>
+                {el?.name}
+            </Typography>
+        </Box>
+    );
 };
 
 const SmsUz = () => {
-  useEffect(() => {
-    const elements = document.querySelectorAll(".staggered, .hidden, .larger");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (entry.target.classList.contains("staggered")) {
-            entry.target.classList.remove("hidden");
-            entry.target.classList.add("SlideFromBottomToTop");
-          } else if (entry.target.classList.contains("larger")) {
-            entry.target.classList.remove("hidden");
-            entry.target.classList.add("ToLarger");
-          }
-          observer.unobserve(entry.target);
-        }
-      });
-    });
+    useEffect(() => {
+        const elements = document.querySelectorAll(
+            ".staggered, .hidden, .larger"
+        );
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains("staggered")) {
+                        entry.target.classList.remove("hidden");
+                        entry.target.classList.add("SlideFromBottomToTop");
+                    } else if (entry.target.classList.contains("larger")) {
+                        entry.target.classList.remove("hidden");
+                        entry.target.classList.add("ToLarger");
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
 
-    elements.forEach((element) => {
-      observer.observe(element);
-    });
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
 
-    return () => observer.disconnect();
-  }, []);
-  return (
-    <Box className="bg-main">
-      <Container>
-        <Box sx={{ p: "80px 0px" }}>
-          <Box sx={wrapperStyles}>
-            <Box sx={{ maxWidth: 500 }}>
-              <img
-                src={SmsLogo}
-                alt="sms-logo"
-                width={313}
-                height={47}
-                className="staggered hidden"
-              />
-              <Box sx={deliveryIconStyles} className="staggered hidden">
-                <Sms />
-                <Typography
-                  variant="body1"
-                  color={"primary.main"}
-                  className="staggered hidden"
-                >
-                  Notification
-                </Typography>
-              </Box>
-              <Typography
-                variant="h4"
-                my={"26px"}
-                lineHeight={"40px"}
-                className="staggered hidden"
-              >
-                Smsuz.uz - It is a platform for bulk SMS messaging.
-              </Typography>
-              <Typography variant="h2" className="staggered hidden">
-                What we did?
-              </Typography>
-              <Box sx={arrayWrapperStyles} className="staggered hidden">
-                {erpArr?.map((el, ind) => (
-                  <ErpCard key={ind} {...{ el }} />
-                ))}
-              </Box>
-            </Box>
-            <Box
-              sx={{ maxWidth: 500, position: "relative" }}
-              className="larger hidden"
-            >
-              <img src={Erp} alt="erp" width="547px" height="407px" />
-            </Box>
-          </Box>
+        return () => observer.disconnect();
+    }, []);
+    return (
+        <Box className="bg-main">
+            <Container>
+                <Box sx={{ p: "80px 0px" }}>
+                    <Box sx={wrapperStyles}>
+                        <Box sx={leftSideContainerStyles}>
+                            <img
+                                src={SmsLogo}
+                                alt="sms-logo"
+                                width={313}
+                                height={47}
+                                className="staggered hidden"
+                            />
+                            <Box
+                                sx={deliveryIconStyles}
+                                className="staggered hidden"
+                            >
+                                <Sms />
+                                <Typography
+                                    variant="body1"
+                                    color={"primary.main"}
+                                    className="staggered hidden"
+                                >
+                                    Notification
+                                </Typography>
+                            </Box>
+                            <Typography
+                                variant="h4"
+                                my={"26px"}
+                                lineHeight={"40px"}
+                                className="staggered hidden"
+                            >
+                                Smsuz.uz - It is a platform for bulk SMS
+                                messaging.
+                            </Typography>
+                            <Typography
+                                variant="h2"
+                                className="staggered hidden"
+                            >
+                                What we did?
+                            </Typography>
+                            <Box
+                                sx={arrayWrapperStyles}
+                                className="staggered hidden"
+                            >
+                                {erpArr?.map((el, ind) => (
+                                    <ErpCard key={ind} {...{ el }} />
+                                ))}
+                            </Box>
+                        </Box>
+                        <Box
+                            sx={bannerContainerStyles}
+                            className="larger hidden"
+                        >
+                            <img src={Erp} alt="erp" id="erp" />
+                        </Box>
+                    </Box>
+                </Box>
+            </Container>
         </Box>
-      </Container>
-    </Box>
-  );
+    );
 };
 
 export default SmsUz;
 
 const mobileCardStyles = {
-  p: "10px 20px 10px 10px",
-  bgcolor: "primary.light",
-  borderRadius: "8px",
-  width: "120px",
-  height: 98,
+    p: "10px 20px 10px 10px",
+    bgcolor: "primary.light",
+    borderRadius: "8px",
+    width: "120px",
+    height: 98,
 };
 
 const deliveryIconStyles = {
-  display: "flex",
-  columnGap: 1,
-  p: "4px 16px",
-  borderRadius: "100px",
-  bgcolor: "secondary.main",
-  alignItems: "center",
-  mt: "30px",
-  width: "fit-content",
+    display: "flex",
+    columnGap: 1,
+    p: "4px 16px",
+    borderRadius: "100px",
+    bgcolor: "secondary.main",
+    alignItems: "center",
+    mt: "30px",
+    width: "fit-content",
 };
 
 const wrapperStyles = {
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "20px",
+    flexDirection: { mobile: "column", tablet: "unset", desktop: "unset" },
 };
 
 const arrayWrapperStyles = {
-  display: "flex",
-  flexWrap: "wrap",
-  gap: "15px",
-  my: "40px",
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "15px",
+    my: "40px",
+};
+
+const bannerContainerStyles = {
+    maxWidth: {
+        mobile: "100%",
+        tablet: 500,
+        desktop: 500,
+    },
+    position: "relative",
+    width: {
+        mobile: "100%",
+        tablet: "50%",
+        desktop: "50%",
+    },
+    "#erp": {
+        width: "100%",
+        borderRadius: "10px",
+        height: "100%",
+    },
+};
+
+const leftSideContainerStyles = {
+    maxWidth: {
+        mobile: "100%",
+        tablet: 500,
+        desktop: 500,
+    },
+    width: {
+        mobile: "100%",
+        tablet: "50%",
+        desktop: "50%",
+    },
 };

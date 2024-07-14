@@ -8,136 +8,214 @@ import { Button } from "@mui/material";
 import { contactsArr, socialMediaArr } from "../../assets/data/contactsData";
 
 interface FormValues {
-  name: string;
-  email: string;
-  project: string;
+    name: string;
+    email: string;
+    project: string;
 }
 
 interface FormErrors {
-  name?: string;
-  email?: string;
+    name?: string;
+    email?: string;
 }
 
 const validations = (values: FormValues) => {
-  const errors: FormErrors = {};
-  if (!values?.name) {
-    errors["name"] = "Fill in the field";
-  }
-  if (!values?.email) {
-    errors["email"] = "Fill in the field";
-  }
-  return errors;
+    const errors: FormErrors = {};
+    if (!values?.name) {
+        errors["name"] = "Fill in the field";
+    }
+    if (!values?.email) {
+        errors["email"] = "Fill in the field";
+    }
+    return errors;
 };
 
 const handleSubmit = (
-  values: FormValues,
-  { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
+    values: FormValues,
+    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
 ) => {
-  setTimeout(() => {
-    alert(JSON.stringify(values, null, 2));
-    setSubmitting(false);
-  }, 400);
+    setTimeout(() => {
+        alert(JSON.stringify(values, null, 2));
+        setSubmitting(false);
+    }, 400);
 };
 const ContactUs = () => {
-  return (
-    <Box className="bg-main">
-      <Container>
-        <Box sx={{ p: "80px 0px" }}>
-          <Typography
-            variant="h1"
-            color="primary.main"
-            mb={"43px"}
-            fontSize={"64px !important"}
-            width={"800px"}
-          >
-            Contact us
-          </Typography>
-
-          <Box sx={contentWrapperStyles}>
-            <Box sx={{ maxWidth: 424, width: "100%" }}>
-              <Typography variant="h3" mb={"50px"}>
-                Leave us a message
-              </Typography>
-              <Formik
-                initialValues={{ name: "", email: "", project: "" }}
-                validate={validations}
-                onSubmit={handleSubmit}
-              >
-                {({}) => (
-                  <Form>
-                    <Field name="name" component={TextField} label="Name" />
-                    <Field
-                      name="email"
-                      component={TextField}
-                      label="Your email"
-                    />
-                    <Field
-                      name="project"
-                      component={TextField}
-                      label="Briefly describe your project"
-                      multiline
-                      rows={4}
-                    />
-                    <Button type="submit" size="medium" fullWidth>
-                      Submit
-                    </Button>
-                  </Form>
-                )}
-              </Formik>
-            </Box>
-            <Box sx={{ maxWidth: 424, width: "100%" }}>
-              <Box sx={{ display: "flex", flexDirection: "column", rowGap: 4 }}>
-                {contactsArr?.map((el, ind, arr) => (
-                  <Box sx={contactCardStyles}>
-                    {el?.icon}
-                    <Typography variant="body1" fontSize={"16px !important"}>
-                      {el?.name}
+    return (
+        <Box className="bg-main">
+            <Container>
+                <Box sx={{ p: "80px 0px" }}>
+                    <Typography
+                        variant="h1"
+                        color="primary.main"
+                        sx={textStyles}
+                    >
+                        Contact us
                     </Typography>
-                  </Box>
-                ))}
-              </Box>
-              <Box sx={socialMediaContainerStyles}>
-                {socialMediaArr?.map((el) => (
-                  <Box sx={{ cursor: "pointer" }}>{el?.icon}</Box>
-                ))}
-              </Box>
-              <Box sx={{ mt: 2 }}>
-                <iframe
-                  src="https://yandex.com/map-widget/v1/?um=constructor%3A3d9eefa927bd54bcc9e8fa398a73c8cafb60622737263c96ad9341c32c21fa69&source=constructor"
-                  width={424}
-                  height={232}
-                  style={{ border: "none", borderRadius: "12px" }}
-                ></iframe>
-              </Box>
-            </Box>
-          </Box>
+
+                    <Box sx={contentWrapperStyles}>
+                        <Box sx={formContainerStyles}>
+                            <Typography variant="h3" mb={"50px"}>
+                                Leave us a message
+                            </Typography>
+                            <Formik
+                                initialValues={{
+                                    name: "",
+                                    email: "",
+                                    project: "",
+                                }}
+                                validate={validations}
+                                onSubmit={handleSubmit}
+                            >
+                                {() => (
+                                    <Form>
+                                        <Field
+                                            name="name"
+                                            component={TextField}
+                                            label="Name"
+                                        />
+                                        <Field
+                                            name="email"
+                                            component={TextField}
+                                            label="Your email"
+                                        />
+                                        <Field
+                                            name="project"
+                                            component={TextField}
+                                            label="Briefly describe your project"
+                                            multiline
+                                            rows={4}
+                                        />
+                                        <Button
+                                            type="submit"
+                                            size="medium"
+                                            fullWidth
+                                        >
+                                            Submit
+                                        </Button>
+                                    </Form>
+                                )}
+                            </Formik>
+                        </Box>
+                        <Box sx={leftSideContainerStyles}>
+                            <Box sx={contactsWrapperStyles}>
+                                {contactsArr?.map((el, ind, arr) => (
+                                    <Box sx={contactCardStyles}>
+                                        {el?.icon}
+                                        <Typography
+                                            variant="body1"
+                                            fontSize={"16px !important"}
+                                        >
+                                            {el?.name}
+                                        </Typography>
+                                    </Box>
+                                ))}
+                            </Box>
+                            <Box sx={socialMediaContainerStyles}>
+                                {socialMediaArr?.map((el) => (
+                                    <Box sx={{ cursor: "pointer" }}>
+                                        {el?.icon}
+                                    </Box>
+                                ))}
+                            </Box>
+                            <Box sx={iframeContainerStyles}>
+                                <iframe
+                                    id="iframe"
+                                    title="udevs"
+                                    src="https://yandex.com/map-widget/v1/?um=constructor%3A3d9eefa927bd54bcc9e8fa398a73c8cafb60622737263c96ad9341c32c21fa69&source=constructor"
+                                ></iframe>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
+            </Container>
         </Box>
-      </Container>
-    </Box>
-  );
+    );
 };
 
 export default ContactUs;
 
 const contactCardStyles = {
-  display: "flex",
-  alignItems: "center",
-  columnGap: 1,
+    display: "flex",
+    alignItems: "center",
+    columnGap: 1,
 };
 
 const contentWrapperStyles = {
-  boxShadow: "2px 10px 28px rgba(75,0,129,.12)",
-  p: "40px 98px 88px",
-  borderRadius: "10px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  bgcolor: "common.white",
+    boxShadow: {
+        mobile: "none",
+        tablet: "2px 10px 28px rgba(75,0,129,.12)",
+        desktop: "2px 10px 28px rgba(75,0,129,.12)",
+    },
+    p: { desktop: "40px 98px 88px", tablet: "40px 50px 88px" },
+    borderRadius: "10px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    bgcolor: "common.white",
+    gap: "20px",
+    flexDirection: { mobile: "column", tablet: "unset", desktop: "unset" },
 };
 
 const socialMediaContainerStyles = {
-  display: "flex",
-  alignItems: "center",
-  columnGap: "20px",
-  mt: "30px",
+    display: "flex",
+    alignItems: "center",
+    columnGap: "20px",
+    mt: "30px",
+};
+
+const iframeContainerStyles = {
+    mt: 2,
+    "#iframe": {
+        maxWidth: 424,
+        height: 232,
+        border: "none",
+        borderRadius: "12px",
+        width: "100%",
+        display: { mobile: "none", tablet: "block", desktop: "block" },
+    },
+};
+
+const textStyles = {
+    mb: "43px",
+    fontSize: {
+        mobile: "32px !important",
+        desktop: "64px !important",
+        tablet: "64px !important",
+    },
+    width: {
+        mobile: "100%",
+        tablet: "800px",
+        desktop: "800px",
+    },
+};
+
+const formContainerStyles = {
+    maxWidth: {
+        mobile: "100%",
+        tablet: 424,
+        desktop: 424,
+    },
+    width: {
+        mobile: "100%",
+        tablet: "50%",
+        desktop: "50%",
+    },
+};
+
+const leftSideContainerStyles = {
+    maxWidth: {
+        mobile: "100%",
+        tablet: 424,
+        desktop: 424,
+    },
+    width: {
+        mobile: "100%",
+        tablet: "50%",
+        desktop: "50%",
+    },
+};
+
+const contactsWrapperStyles = {
+    display: "flex",
+    flexDirection: "column",
+    rowGap: 4,
 };
