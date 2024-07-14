@@ -15,7 +15,7 @@ import Delever from "./components/Home/Delever";
 import SmsUz from "./components/Home/SmsUz";
 import GoodZone from "./components/Home/GoodZone";
 import Iman from "./components/Home/Iman";
-// import HowWork from "./components/Home/HowWork";
+import HowWork from "./components/Home/HowWork";
 import ContactUs from "./components/Home/ContactUs";
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
             <GoodZone />
             <div id="Iman" />
             <Iman />
-            {/* <HowWork /> */}
+            <HowWork />
             <div id="Contact" />
             <ContactUs />
         </Layout>

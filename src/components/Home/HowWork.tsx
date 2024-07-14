@@ -7,6 +7,7 @@ import { ReactComponent as Analysis } from "../../assets/images/icons/analysis.s
 import { ReactComponent as Team } from "../../assets/images/icons/team-work.svg";
 import { ReactComponent as Offer } from "../../assets/images/icons/offer.svg";
 import { ReactComponent as Start } from "../../assets/images/icons/start.svg";
+import useBreakpoints from "../../hooks/breakpoints";
 
 const proccessArr = [
     {
@@ -37,6 +38,7 @@ const proccessArr = [
 ];
 
 const HowWork = () => {
+    const { mobile } = useBreakpoints();
     useEffect(() => {
         const elements = document.querySelectorAll(".staggered, .hidden");
         const observer = new IntersectionObserver((entries) => {
@@ -69,21 +71,27 @@ const HowWork = () => {
                     How we work!
                 </Typography>
                 <Box sx={wrapperStyles} className="staggered hidden">
-                    <Box className="how-works" />
+                    {!mobile && <Box className="how-works" />}
                     {proccessArr?.map((el) => (
                         <Box sx={cardWrapperStyles}>
-                            {el?.icon}
-                            <Typography variant="h4" textAlign={"center"}>
-                                {el?.name}
-                            </Typography>
-                            <Typography
-                                variant="body1"
-                                color={"grey.600"}
-                                textAlign={"center"}
-                                fontSize={"16px !important"}
-                            >
-                                {el?.desc}
-                            </Typography>
+                            <Box>{el?.icon}</Box>
+                            <Box sx={proccessTextStyles}>
+                                <Typography variant="h2" textAlign={"center"}>
+                                    {el?.name}
+                                </Typography>
+                                <Typography
+                                    variant="body1"
+                                    color={"grey.600"}
+                                    textAlign={{
+                                        mobile: "unset",
+                                        tablet: "center",
+                                        desktop: "center",
+                                    }}
+                                    fontSize={"16px !important"}
+                                >
+                                    {el?.desc}
+                                </Typography>
+                            </Box>
                         </Box>
                     ))}
                 </Box>
@@ -97,17 +105,20 @@ export default HowWork;
 const wrapperStyles = {
     mt: "80px",
     pt: "30px",
-    height: 216,
+    height: { mobile: "auto", tablet: 216, desktop: 216 },
     position: "relative",
     display: "flex",
+    flexDirection: { mobile: "column", tablet: "unset", desktop: "unset" },
+    rowGap: 3,
 };
 
 const cardWrapperStyles = {
     display: "flex",
-    flexDirection: "column",
-    maxWidth: 236,
+    flexDirection: { mobile: "row", tablet: "column", desktop: "column" },
+    maxWidth: { mobile: "100%", tablet: 236, desktop: 236 },
     alignItems: "center",
     rowGap: 1,
+    columnGap: 3,
     px: "20px",
 };
 
@@ -123,4 +134,15 @@ const textStyles = {
         tablet: "800px",
         desktop: "800px",
     },
+};
+
+const proccessTextStyles = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: {
+        mobile: "flex-start",
+        tablet: "unset",
+        desktop: "unset",
+    },
+    rowGap: 1,
 };

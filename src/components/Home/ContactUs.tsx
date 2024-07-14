@@ -1,11 +1,12 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import React from "react";
+import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import TextField from "../TextFields/index";
 import { Field, Form, Formik } from "formik";
 import { Button } from "@mui/material";
 import { contactsArr, socialMediaArr } from "../../assets/data/contactsData";
+import Success from "../Modals/Success";
 
 interface FormValues {
     name: string;
@@ -29,19 +30,23 @@ const validations = (values: FormValues) => {
     return errors;
 };
 
-const handleSubmit = (
-    values: FormValues,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
-) => {
-    setTimeout(() => {
-        alert(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-    }, 400);
-};
 const ContactUs = () => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const handleSubmit = (
+        values: FormValues,
+        { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
+    ) => {
+        setTimeout(() => {
+            handleOpen();
+            setSubmitting(false);
+        }, 400);
+    };
     return (
         <Box className="bg-main">
             <Container>
+                <Success {...{ open, handleClose }} />
                 <Box sx={{ p: "80px 0px" }}>
                     <Typography
                         variant="h1"
@@ -50,7 +55,6 @@ const ContactUs = () => {
                     >
                         Contact us
                     </Typography>
-
                     <Box sx={contentWrapperStyles}>
                         <Box sx={formContainerStyles}>
                             <Typography variant="h3" mb={"50px"}>
