@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Container from "@mui/material/Container";
 import TextField from "../TextFields/index";
 import { Field, Form, Formik } from "formik";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 import { contactsArr, socialMediaArr } from "../../assets/data/contactsData";
 import Success from "../Modals/Success";
 
