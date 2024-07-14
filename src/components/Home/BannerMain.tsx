@@ -148,11 +148,7 @@ const leftSideContainerStyles = {
 const bannerContainerStyles = {
     "#banner": {
         maxWidth: 547,
-        width: {
-            mobile: "100%",
-            desktop: "100%",
-            tablet: "100%",
-        },
+        width: "100%",
     },
     width: { mobile: "auto", desktop: "50%", tablet: "50%" },
 };

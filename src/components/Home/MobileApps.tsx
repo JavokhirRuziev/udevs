@@ -142,7 +142,7 @@ const mobileCardStyles = {
     p: "10px 20px 10px 10px",
     bgcolor: "primary.light",
     borderRadius: "8px",
-    minWidth: "150px",
+    minWidth: { mobile: 115, tablet: 150, desktop: 150 },
 };
 
 const textContainerStyles = {

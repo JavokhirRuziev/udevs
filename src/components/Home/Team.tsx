@@ -129,10 +129,10 @@ const contentWrapperStyles = {
 
 const bannerContainerStyles = {
     "#banner": {
-        maxWidth: { desktop: 500 },
+        maxWidth: 500,
         width: "100%",
     },
-    width: "50%",
+    width: { mobile: "100%", tablet: "50%", desktop: "50%" },
 };
 
 const textStyles = {

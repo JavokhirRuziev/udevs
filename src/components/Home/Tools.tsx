@@ -100,11 +100,7 @@ const Tools = () => {
                         sx={{ mb: "48px" }}
                         className="staggered hidden"
                     >
-                        <RadioGroup
-                            row
-                            value={selected}
-                            sx={{ whiteSpace: "nowrap" }}
-                        >
+                        <RadioGroup row value={selected} sx={radioDroupStyles}>
                             {programsNameArr?.map((el) => (
                                 <FormControlLabel
                                     key={el.id}
@@ -180,4 +176,14 @@ const programsWrapperStyles = {
         tablet: "unset",
         desktop: "unset",
     },
+};
+
+const radioDroupStyles = {
+    whiteSpace: "nowrap",
+    display: {
+        mobile: "grid",
+        tablet: "block",
+        desktop: "block",
+    },
+    gridTemplateColumns: "1fr 1fr",
 };

@@ -144,7 +144,11 @@ const wrapperStyles = {
     justifyContent: "space-between",
     alignItems: "center",
     gap: "20px",
-    flexDirection: { mobile: "column", tablet: "unset", desktop: "unset" },
+    flexDirection: {
+        mobile: "column-reverse",
+        tablet: "unset",
+        desktop: "unset",
+    },
 };
 
 const arrayWrapperStyles = {
