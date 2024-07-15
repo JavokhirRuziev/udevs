@@ -69,14 +69,7 @@ const Team = () => {
                     Team
                 </Typography>
                 <Box sx={contentWrapperStyles}>
-                    <Box
-                        maxWidth={500}
-                        width={{
-                            mobile: "100%",
-                            tablet: "50%",
-                            desktop: "50%",
-                        }}
-                    >
+                    <Box sx={rightSideContainerStyles}>
                         <Typography
                             variant="h4"
                             lineHeight={"40px"}
@@ -91,12 +84,7 @@ const Team = () => {
                         <Typography
                             className="staggered hidden count-up"
                             variant="h1"
-                            fontSize={{
-                                mobile: "80px !important",
-                                desktop: "120px !important",
-                                tablet: "120px !important",
-                            }}
-                            color={"primary.main"}
+                            sx={textStylesH1}
                         >
                             {count}
                             {showPlus && <span className="plus-sign">+</span>}
@@ -142,4 +130,22 @@ const textStyles = {
         tablet: "64px !important",
     },
     mb: "43px",
+};
+
+const textStylesH1 = {
+    color: "primary.main",
+    fontSize: {
+        mobile: "80px !important",
+        desktop: "120px !important",
+        tablet: "120px !important",
+    },
+};
+
+const rightSideContainerStyles = {
+    width: {
+        mobile: "100%",
+        tablet: "50%",
+        desktop: "50%",
+    },
+    maxWidth: 500,
 };

@@ -81,13 +81,7 @@ const HowWork = () => {
                                 </Typography>
                                 <Typography
                                     variant="body1"
-                                    color={"grey.600"}
-                                    textAlign={{
-                                        mobile: "unset",
-                                        tablet: "center",
-                                        desktop: "center",
-                                    }}
-                                    fontSize={"16px !important"}
+                                    sx={textStylesBody1}
                                 >
                                     {el?.desc}
                                 </Typography>
@@ -145,4 +139,14 @@ const proccessTextStyles = {
         desktop: "unset",
     },
     rowGap: 1,
+};
+
+const textStylesBody1 = {
+    color: "grey.600",
+    fontSize: "16px !important",
+    textAlign: {
+        mobile: "unset",
+        tablet: "center",
+        desktop: "center",
+    },
 };

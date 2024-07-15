@@ -40,13 +40,9 @@ const Header = () => {
                                         title={
                                             el?.children && (
                                                 <Box
-                                                    sx={{
-                                                        minWidth:
-                                                            el?.name !==
-                                                            "Language"
-                                                                ? 300
-                                                                : 120,
-                                                    }}
+                                                    sx={tooltipContentWrapperStyles(
+                                                        el?.name
+                                                    )}
                                                 >
                                                     {el?.name !==
                                                         "Language" && (
@@ -196,3 +192,7 @@ const categoriesWrapperStyles = {
     alignItems: "center",
     columnGap: "32px",
 };
+
+const tooltipContentWrapperStyles = (name: string) => ({
+    minWidth: name !== "Language" ? 300 : 120,
+});

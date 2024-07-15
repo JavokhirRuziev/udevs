@@ -92,16 +92,7 @@ const UIUX = () => {
                         UI / UX design
                     </Typography>
                     <Box sx={contentWrapperStyles}>
-                        <Box
-                            sx={{
-                                maxWidth: 500,
-                                width: {
-                                    mobile: "100%",
-                                    tablet: "50%",
-                                    desktop: "50%",
-                                },
-                            }}
-                        >
+                        <Box sx={leftSideContainerStyles}>
                             <Typography
                                 variant="h2"
                                 mb={"26px"}
@@ -120,14 +111,8 @@ const UIUX = () => {
                             </Box>
                             <Typography
                                 variant="h1"
-                                mt={"24px"}
-                                mb={"32px"}
                                 className="staggered hidden"
-                                textAlign={{
-                                    mobile: "center",
-                                    tablet: "unset",
-                                    desktop: "unset",
-                                }}
+                                sx={textStylesH1}
                             >
                                 Technologies
                             </Typography>
@@ -163,6 +148,15 @@ const UIUX = () => {
 };
 
 export default UIUX;
+
+const leftSideContainerStyles = {
+    maxWidth: 500,
+    width: {
+        mobile: "100%",
+        tablet: "50%",
+        desktop: "50%",
+    },
+};
 
 const mobileCardStyles = {
     p: "10px 20px 10px 10px",
@@ -227,4 +221,14 @@ const textStyles = {
         tablet: "800px",
         desktop: "800px",
     },
+};
+
+const textStylesH1 = {
+    textAlign: {
+        mobile: "center",
+        tablet: "unset",
+        desktop: "unset",
+    },
+    mt: "24px",
+    mb: "32px",
 };

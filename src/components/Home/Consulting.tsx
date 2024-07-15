@@ -69,16 +69,7 @@ const Consulting = () => {
                         IT consulting
                     </Typography>
                     <Box sx={contentWrapperStyles}>
-                        <Box
-                            sx={{
-                                maxWidth: 500,
-                                width: {
-                                    mobile: "100%",
-                                    tablet: "50%",
-                                    desktop: "50%",
-                                },
-                            }}
-                        >
+                        <Box sx={leftSideContainerStyles}>
                             <Typography
                                 variant="h2"
                                 mb={"26px"}
@@ -163,5 +154,14 @@ const textStyles = {
         mobile: "100%",
         tablet: "800px",
         desktop: "800px",
+    },
+};
+
+const leftSideContainerStyles = {
+    maxWidth: 500,
+    width: {
+        mobile: "100%",
+        tablet: "50%",
+        desktop: "50%",
     },
 };
